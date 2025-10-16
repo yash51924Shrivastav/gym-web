@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Web - Your Fitness Companion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-logo">
+                        <div class="logo-icon">🏋️</div>
+                        <h1 class="hero-title">GYM<span class="accent">WEB</span></h1>
+                        <div class="hero-tagline">Transform Your Body, Elevate Your Mind</div>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="total-users">0</div>
+                            <div class="stat-label">Active Users</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="total-completed-workouts">0</div>
+                            <div class="stat-label">Workouts Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="total-sets-completed">0</div>
+                            <div class="stat-label">Sets Completed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="home-buttons">
+                        <button id="start-exercise-btn" class="btn primary hero-btn">
+                            <span class="btn-icon">🚀</span>
+                            Start Exercise
+                        </button>
+                        <button id="check-progress-btn" class="btn secondary hero-btn">
+                            <span class="btn-icon">📊</span>
+                            Check Progress
+                        </button>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🎬</div>
+                            <h3>Video Guidance</h3>
+                            <p>Professional YouTube tutorials for every exercise</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⏱️</div>
+                            <h3>Smart Timer</h3>
+                            <p>Customizable rest periods with skip/extend options</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📈</div>
+                            <h3>Progress Tracking</h3>
+                            <p>Detailed analytics and workout history</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h3>7-Day Program</h3>
+                            <p>Complete weekly workout schedule</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise Input Page -->
+        <div id="exercise-input-page" class="page">
+            <header>
+                <button id="back-home" class="back-btn">← Back</button>
+                <h2>Setup Your Workout</h2>
+            </header>
+            
+            <form id="workout-form">
+                <div class="form-group">
+                    <label for="user-name">Your Name:</label>
+                    <input type="text" id="user-name" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="workout-day">Select Day:</label>
+                    <select id="workout-day" required>
+                        <option value="">Choose a day</option>
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">Sunday</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn primary">Get Workout Plan</button>
+            </form>
+        </div>
+
+        <!-- Workout Display Page -->
+        <div id="workout-page" class="page">
+            <header>
+                <button id="back-to-input" class="back-btn">← Back</button>
+                <h2 id="workout-title"></h2>
+                <p id="user-greeting"></p>
+            </header>
+            
+            <div id="workout-container">
+                <!-- Workout exercises will be dynamically inserted here -->
+            </div>
+            
+            <div class="workout-actions">
+                <button id="complete-workout" class="btn success">Complete Workout</button>
+                <button id="new-workout" class="btn secondary">New Workout</button>
+            </div>
+        </div>
+
+        <!-- Individual Exercise Page -->
+        <div id="exercise-page" class="page">
+            <div class="exercise-background">
+                <header>
+                    <button id="back-to-workout" class="back-btn">← Back to Workout</button>
+                    <div class="exercise-progress">
+                        <span id="current-exercise-number">1</span> / <span id="total-exercises">8</span>
+                    </div>
+                </header>
+                
+                <div class="exercise-content">
+                    <div class="exercise-video-section">
+                        <h2 id="exercise-name">Exercise Name</h2>
+                        <div class="video-container">
+                            <iframe id="exercise-video" 
+                                width="560" 
+                                height="315" 
+                                src="" 
+                                title="Exercise Video" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise-info-section">
+                        <div class="exercise-instructions">
+                            <h3>How to Perform:</h3>
+                            <p id="exercise-instructions">Exercise instructions will appear here...</p>
+                        </div>
+                        
+                        <div class="set-tracking">
+                            <h3>Sets Progress:</h3>
+                            <div class="sets-display">
+                                <div class="set-counter">
+                                    <span>Set <span id="current-set">1</span> of <span id="total-sets">3</span></span>
+                                </div>
+                                <div class="set-buttons">
+                                    <button id="complete-set" class="btn success">Complete Set</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-navigation">
+                            <button id="prev-exercise" class="btn secondary" disabled>← Previous</button>
+                            <button id="next-exercise" class="btn primary">Next Exercise →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rest Timer Page -->
+        <div id="timer-page" class="page">
+            <div class="timer-background">
+                <div class="timer-container">
+                    <h2>Rest Time</h2>
+                    <div class="timer-display">
+                        <div class="timer-circle">
+                            <svg width="200" height="200">
+                                <circle cx="100" cy="100" r="90" stroke="#e2e8f0" stroke-width="8" fill="none"/>
+                                <circle id="timer-progress" cx="100" cy="100" r="90" stroke="#667eea" stroke-width="8" fill="none" 
+                                    stroke-linecap="round" transform="rotate(-90 100 100)"/>
+                            </svg>
+                            <div class="timer-text">
+                                <span id="timer-minutes">01</span>:<span id="timer-seconds">00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timer-controls">
+                        <button id="extend-timer" class="btn secondary">+30s</button>
+                        <button id="skip-timer" class="btn primary">Skip Rest</button>
+                        <button id="reduce-timer" class="btn secondary">-15s</button>
+                    </div>
+                    
+                    <p class="timer-message">Great work! Take a moment to rest before your next set.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Name Modal -->
+        <div id="progress-name-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>👤 Enter Your Name</h2>
+                    <button id="close-modal" class="close-btn">×</button>
+                </div>
+                <div class="modal-body">
+                    <form id="progress-name-form">
+                        <div class="form-group">
+                            <label for="progress-name">Name:</label>
+                            <input type="text" id="progress-name" placeholder="Enter your name" required>
+                            <!-- <div class="input-hint">Enter 'Yash-devil-side' for admin access</div> -->
+                        </div>
+                        <div class="modal-actions">
+                            <button type="button" id="cancel-progress" class="btn secondary">Cancel</button>
+                            <button type="submit" class="btn primary">View Progress</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Progress Page -->
+        <div id="progress-page" class="page">
+            <header>
+                <button id="back-home-progress" class="back-btn">← Back</button>
+                <h2 id="progress-page-title">Your Progress</h2>
+            </header>
+            
+            <div id="progress-container">
+                <div id="progress-stats">
+                    <div class="stat-card">
+                        <h3>Total Workouts</h3>
+                        <span id="total-workouts">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Current Streak</h3>
+                        <span id="current-streak">0 days</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Sets</h3>
+                        <span id="user-total-sets">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Avg Rest Time</h3>
+                        <span id="avg-rest-time">0s</span>
+                    </div>
+                </div>
+                
+                <div id="detailed-workouts">
+                    <h3>Detailed Workout History</h3>
+                    <div id="workout-details-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="admin-page" class="page">
+            <div class="admin-background">
+                <header>
+                    <button id="back-home-admin" class="back-btn">← Back</button>
+                    <h2 class="admin-title">🔥 Admin Dashboard - Yash Devil Side</h2>
+                </header>
+                
+                <div class="admin-container">
+                    <div class="admin-stats">
+                        <div class="admin-stat-card">
+                            <h3>Total Users</h3>
+                            <span id="admin-total-users">0</span>
+                        </div>
+                        <div class="admin-stat-card">
+                            <h3>Total Workouts</h3>
+                            <span id="admin-total-workouts">0</span>
+                        </div>
+                        <div class="admin-stat-card">
+                            <h3>Total Sets</h3>
+                            <span id="admin-total-sets">0</span>
+                        </div>
+                        <div class="admin-stat-card">
+                            <h3>Avg Workout Time</h3>
+                            <span id="admin-avg-time">0m</span>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-content">
+                        <div class="admin-section">
+                            <h3>👥 All Users Data</h3>
+                            <div id="all-users-data"></div>
+                        </div>
+                        
+                        <div class="admin-section">
+                            <h3>⏱️ Real-time Analytics</h3>
+                            <div id="realtime-analytics">
+                                <div class="analytics-item">
+                                    <strong>Current Active User:</strong> <span id="current-active-user">None</span>
+                                </div>
+                                <div class="analytics-item">
+                                    <strong>Set Completion Time:</strong> <span id="set-completion-time">--</span>
+                                </div>
+                                <div class="analytics-item">
+                                    <strong>Rest Duration:</strong> <span id="rest-duration">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
